@@ -26,7 +26,6 @@ create_prolific_files <- function(df, ProlificIDColumn, bonusColumn, output_fold
   message(paste0("Total bonus to pay: ", total_bonus))
 
   df %>%
-    dplyr::mutate(total_bonus_with_fees = !!rlang::sym(as.character(ensym(bonusColumn))) * 1.4) %>%
-    dplyr::select({{ProlificIDColumn}}, total_bonus_with_fees) %>%
+    dplyr::select({{ProlificIDColumn}}, {{bonusColumn}}) %>%
     readr::write_csv(paste0(output_folder, "/bulk_payment_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"), col_names = FALSE)
 }
