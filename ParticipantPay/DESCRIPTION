@@ -1,0 +1,13 @@
+Package: ParticipantPay
+Title: Create participant payment files easily
+Version: 0.1.0
+Authors@R: person("Ali Seyhun", "Saral", email = "saral@posteo.net", role = c("aut", "cre"))
+Description: This package writes payment files for participants, for instance prolific.
+License: Apache License 2.0
+Encoding: UTF-8
+LazyData: true
+Imports:
+    tidyr,
+    dplyr,
+    readr
+RoxygenNote: 7.3.1
