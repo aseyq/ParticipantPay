@@ -8,6 +8,11 @@
 #' @return NULL
 #' @export
 create_prolific_files <- function(df, ProlificIDColumn, bonusColumn, output_folder=".") {
+
+  # round bonus column
+  df <- df %>%
+    dplyr::mutate(!!rlang::sym(as.character(ensym(bonusColumn))) := round(!!rlang::sym(as.character(ensym(bonusColumn))), 2))
+    
   dplyr::select(df, {{ProlificIDColumn}}) %>%
     readr::write_csv(paste0(output_folder, "/bulk_approval_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".txt"), col_names = FALSE)
 
