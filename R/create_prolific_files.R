@@ -25,11 +25,7 @@ create_prolific_files <- function(df, ProlificIDColumn, bonusColumn, output_fold
     readr::write_csv(paste0(output_folder, "/Prolific_", format(current_time_formatted, "%Y%m%d_%H%M%S"), "bulk_approval.txt"), col_names = FALSE)
 
   dplyr::select(df, {{ProlificIDColumn}}, {{bonusColumn}}) %>%
-    print(n=50000) %>%
-    ## append to text file
-    write(paste0("Prolific ID, Bonus\n"), file=paste0(output_folder, "/Prolific_", current_time_formatted, "_bulk_payment.txt"), append=TRUE)
-
-
+    print(n=50000) 
 
   total_bonus <- df %>%
     dplyr::summarise(total_bonus = sum(!!rlang::sym(as.character(ensym(bonusColumn))), na.rm = TRUE)) %>%
