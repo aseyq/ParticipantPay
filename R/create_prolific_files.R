@@ -44,7 +44,7 @@ create_prolific_files <- function(df, ProlificIDColumn, bonusColumn, output_fold
   # Print ProlificIDColumn and bonusColumn and append to report file
   report_data <- df %>%
     dplyr::select({{ProlificIDColumn}}, {{bonusColumn}}) %>%
-    print(n=50000)
+    print()
 
   # Append report data to report file
   write.table(report_data, file = report_file, append = TRUE, sep = "\t", col.names = FALSE, quote = FALSE)
